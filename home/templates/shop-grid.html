@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+    <script>
+        function to_ajax() {
+
+            var queryString = $("form[name=testForm]").serialize();
+
+            $.ajax({
+
+                url: "/home/store/", // 클라이언트가 요청을 보낼 서버의 URL 주소
+
+                data: queryString,                // HTTP 요청과 함께 서버로 보낼 데이터
+
+                type: "GET",                             // HTTP 요청 방식(GET, POST)
+
+                dataType: "json"                         // 서버에서 보내줄 데이터의 타입
+
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+
+    <!-- Hero Section End -->
+
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Breadcrumb Section End -->
+
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title m-b-0">대한 아파트</h5>
+                </div>
+                <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Number</th>
+                          <th scope="col">State</th>
+                            <th scope="col">Registration</th>
+                            <th scope="col">Get</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% block content %}
+                      {% for obj in store_list %}
+                        <tr>
+                          <th scope="row">{{ obj.id }}</th>
+                          <td>{{ obj.state }}</td>
+                            <td>
+                              <button type="button" class="btn mb-2 btn-outline-secondary" data-toggle="modal" data-target="#varyModal" data-whatever="@mdo"script="">물품 등록{{obj.id}}</button>
+                              <div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="varyModalLabel">New message</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body" id="testForm">
+                                      <form id="{{obj.id}}" name="testForm" method="get">
+                                      <div class="form-group">
+                                          <label for="recipient-name" class="col-form-label">대한 아파트 ({{obj.id}}번 보관소)</label>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="recipient-name" class="col-form-label">동</label>
+                                          <input type="text" class="form-control" id="recipient-name" name="dung">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="message-text" class="col-form-label">호수</label>
+                                          <input type="text" class="form-control" id="recipient-name"name="ho">
+                                        </div>
+                                          <div class="form-group">
+                                          <label for="message-text" class="col-form-label">비밀번호</label>
+                                          <input type="password" class="form-control" id="recipient-name"name="pw">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn mb-2 btn-secondary" data-dismiss="modal"name="'id" value="{{obj.id}}">Close</button>
+                                            <button type="submit" class="btn mb-2 btn-primary"name="id" value="{{obj.id}}" onclick="to_ajax(); return false">Send message</button>
+                                        </div>
+                                      </form>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+
+                            <td>
+                              <button type="button" class="btn mb-2 btn-outline-secondary" data-toggle="modal" data-target="#varyModal2" data-whatever="@mdo">물품 찾기</button>
+                              <div class="modal fade" id="varyModal2" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="varyModalLabel">New message</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                        <label for="message-text" class="col-form-label">비밀번호</label>
+                                        <input type="password" class="form-control" id="recipient-name">
+                                      </div>
+                                                                            <div class="modal-footer">
+                                      <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn mb-2 btn-primary">Send message</button>
+                                    </div>
+                                    </form>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+
+                        </tr>
+                      {% endfor %}
+                      {% endblock content %}
+                      </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+    <!-- Footer Section Begin -->
+
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.nice-select.min.js"></script>
+    <script src="/assets/js/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery.slicknav.js"></script>
+    <script src="/assets/js/mixitup.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>
